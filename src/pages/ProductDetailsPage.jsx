@@ -26,11 +26,22 @@ export default function ProductDetailsPage() {
   if (!product) return <h1>Товар не найден</h1>
 
   return (
-    <>
-      <h1>{product.name}</h1>
-      <p>{product.description}</p>
-      <p><strong>{product.price} {config.currency}</strong></p>
-      <ProductActions product={product} />
-    </>
+    <div className="product-details">
+      <div className="product-details-image">
+        <img src="/placeholder.svg" alt={product.name} />
+      </div>
+
+      <div className="product-details-info">
+        <h1>{product.name}</h1>
+        <p>{product.description}</p>
+        <dl>
+          <dt>Цена</dt>
+          <dd><strong>{product.price} {config.currency}</strong></dd>
+          <dt>Артикул</dt>
+          <dd>{product.id}</dd>
+        </dl>
+        <ProductActions product={product} />
+      </div>
+    </div>
   )
 }

@@ -1,13 +1,16 @@
 import { useState } from 'react'
 import { useCart } from '../hooks/useCart.js'
+import { useMessage } from '../hooks/useMessage.js'
 
 export default function ProductActions({ product }) {
   const { addItem } = useCart()
+  const showMessage = useMessage()
   const [quantity, setQuantity] = useState(1)
 
   function handleAdd() {
     addItem(product, quantity)
     setQuantity(1)
+    showMessage(`«${product.name}» (${quantity} шт.) добавлен в корзину`)
   }
 
   return (
