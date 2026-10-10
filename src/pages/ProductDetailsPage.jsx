@@ -2,9 +2,11 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 import { config } from '../config.js'
 import ProductActions from '../components/ProductActions.jsx'
+import { useImageService } from '../hooks/useImageService.js'
 
 export default function ProductDetailsPage() {
   const { id } = useParams()
+  const { token } = useImageService()
   const [product, setProduct] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
@@ -25,10 +27,15 @@ export default function ProductDetailsPage() {
   if (error) return <p>Не удалось загрузить товар: {error}</p>
   if (!product) return <h1>Товар не найден</h1>
 
+  // Пока токена нет — статическая заглушка, как только появится — картинка от сервиса
+  const imageSrc = token
+    ? `${config.imageService.url}/g?token=${token}&t=${product.name}&template=100`
+    : '/placeholder.svg'
+
   return (
     <div className="product-details">
       <div className="product-details-image">
-        <img src="/placeholder.svg" alt={product.name} />
+        <img src={imageSrc} alt={product.name} />
       </div>
 
       <div className="product-details-info">

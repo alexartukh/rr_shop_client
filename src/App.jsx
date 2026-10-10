@@ -7,6 +7,7 @@ import HomePage from './pages/HomePage.jsx'
 import CategoryPage from './pages/CategoryPage.jsx'
 import ProductDetailsPage from './pages/ProductDetailsPage.jsx'
 import CartPage from './pages/CartPage.jsx'
+import OnePageCheckoutPage from './pages/OnePageCheckoutPage.jsx'
 import NotFoundPage from './pages/NotFoundPage.jsx'
 
 export default function App() {
@@ -22,6 +23,7 @@ export default function App() {
 
       <Route element={<CheckoutLayout />}>
         <Route path="cart" element={<CartPage />} />
+        <Route path="checkout" element={<OnePageCheckoutPage />} />
       </Route>
 
     </Routes>
