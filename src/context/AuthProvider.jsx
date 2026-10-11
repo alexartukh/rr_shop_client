@@ -48,11 +48,6 @@ export default function AuthProvider({ children }) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ user: userParams }),
     })
-    // Отладка: ответ сервера в консоль браузера
-    console.log(`POST ${path} → ${response.status}`, {
-      authorization: response.headers.get('Authorization'),
-      body: await response.clone().text(),
-    })
     if (!response.ok) throw new Error(await errorMessage(response))
 
     const data = await response.json()

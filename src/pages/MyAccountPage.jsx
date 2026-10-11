@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
-import { Navigate } from 'react-router'
+import { Link, Navigate } from 'react-router'
 import { config } from '../config.js'
 import { useAuth } from '../hooks/useAuth.js'
 import { useMessage } from '../hooks/useMessage.js'
+import ProductImage from '../components/ProductImage.jsx'
 
 // Форма имени и фамилии. Рендерится только для вошедшего пользователя,
 // поэтому начальные значения можно брать прямо из user
@@ -80,7 +81,19 @@ export default function MyAccountPage() {
       <p>{user.email}</p>
 
       <h2>Мои данные</h2>
-      <ProfileForm user={user} />
+      {/* Та же раскладка, что на странице товара: картинка слева, данные справа */}
+      <div className="product-details">
+        <div className="product-details-image">
+          <ProductImage
+            name={user.email}
+            template="200"
+            alt={`${user.first_name} ${user.last_name}`}
+          />
+        </div>
+        <div className="product-details-info">
+          <ProfileForm user={user} />
+        </div>
+      </div>
 
       <h2>Мои заказы</h2>
       {error && <p>Не удалось загрузить заказы: {error}</p>}
@@ -90,19 +103,30 @@ export default function MyAccountPage() {
         <table className="orders-table">
           <thead>
             <tr>
+              <th></th>
               <th>№</th>
               <th>Дата</th>
               <th>Товаров</th>
               <th>Сумма</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
             {orders.map((order) => (
               <tr key={order.id}>
+                <td>
+                  <ProductImage
+                    name={String(order.id)}
+                    template="300"
+                    alt={`Заказ №${order.id}`}
+                    className="cart-thumb"
+                  />
+                </td>
                 <td>{order.id}</td>
                 <td>{new Date(order.created_at).toLocaleString('ru-RU')}</td>
                 <td>{order.items_count}</td>
                 <td>{order.amount} {config.currency}</td>
+                <td><Link to={`/account/orders/${order.id}`}>Подробности</Link></td>
               </tr>
             ))}
           </tbody>

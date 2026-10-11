@@ -12,6 +12,7 @@ import ThankYouPage from './pages/ThankYouPage.jsx'
 import NotFoundPage from './pages/NotFoundPage.jsx'
 import LoginPage from './pages/LoginPage.jsx'
 import MyAccountPage from './pages/MyAccountPage.jsx'
+import OrderDetailsPage from './pages/OrderDetailsPage.jsx'
 import AdminPage from './pages/AdminPage.jsx'
 
 export default function App() {
@@ -24,6 +25,7 @@ export default function App() {
         <Route path="product/:id" element={<ProductDetailsPage />} />
         <Route path="login" element={<LoginPage />} />
         <Route path="account" element={<MyAccountPage />} />
+        <Route path="account/orders/:id" element={<OrderDetailsPage />} />
         <Route path="admin" element={<AdminPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>

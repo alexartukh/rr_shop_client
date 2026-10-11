@@ -242,7 +242,7 @@ a.product-tile:hover {
 
 .admin-columns {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 32px;
 }
 
@@ -251,13 +251,69 @@ a.product-tile:hover {
   overflow-x: auto;
 }
 
-@media (max-width: 700px) {
-  .admin-columns {
-    grid-template-columns: 1fr;
-  }
-}
-
 .button-link:disabled {
   opacity: 0.6;
   cursor: default;
+}
+
+/* Форма редактирования над админской таблицей */
+.admin-edit {
+  max-width: none;
+  margin-bottom: 24px;
+  padding: 16px;
+  border: 1px solid #8884;
+  border-radius: 8px;
+}
+
+.admin-edit h3 {
+  margin: 0;
+}
+
+.admin-edit textarea,
+.admin-edit select {
+  padding: 10px;
+  font: inherit;
+}
+
+.data-table tr.selected {
+  background: #2563eb22;
+}
+
+/* Блок по центру страницы оформления заказа */
+.checkout-info {
+  max-width: 600px;
+  margin: 24px auto;
+  padding: 16px 24px;
+  border: 1px solid #8884;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.category-filter {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.category-filter input {
+  flex: 1;
+  max-width: 360px;
+  padding: 10px;
+  font-size: 1rem;
+}
+
+.cart-thumb {
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Картинка и название товара в строке таблицы заказа */
+.order-line-product {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }

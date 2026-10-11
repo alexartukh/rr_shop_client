@@ -6,7 +6,6 @@ import App from './App.jsx'
 import AuthProvider from './context/AuthProvider.jsx'
 import CartProvider from './context/CartProvider.jsx'
 import MessageProvider from './context/MessageProvider.jsx'
-import ImageServiceProvider from './context/ImageServiceProvider.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -14,9 +13,7 @@ createRoot(document.getElementById('root')).render(
       <AuthProvider>
         <CartProvider>
           <MessageProvider>
-            <ImageServiceProvider>
-              <App />
-            </ImageServiceProvider>
+            <App />
           </MessageProvider>
         </CartProvider>
       </AuthProvider>

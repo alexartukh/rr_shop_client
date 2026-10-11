@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 import { useAuth } from './useAuth.js'
 
-// Загрузка данных админского API: const { data, error } = useAdminData('/api/v1/admin/items')
-// data === null, пока идёт загрузка
+// Загрузка данных админского API: const { data, setData, error } = useAdminData('/api/v1/admin/items')
+// data === null, пока идёт загрузка. setData — чтобы обновить строку после редактирования
 export function useAdminData(path) {
   const { authFetch } = useAuth()
   const [data, setData] = useState(null)
@@ -18,5 +18,5 @@ export function useAdminData(path) {
       .catch((err) => setError(err.message))
   }, [path, authFetch])
 
-  return { data, error }
+  return { data, setData, error }
 }
