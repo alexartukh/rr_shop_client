@@ -9,6 +9,9 @@ import ProductDetailsPage from './pages/ProductDetailsPage.jsx'
 import CartPage from './pages/CartPage.jsx'
 import OnePageCheckoutPage from './pages/OnePageCheckoutPage.jsx'
 import NotFoundPage from './pages/NotFoundPage.jsx'
+import LoginPage from './pages/LoginPage.jsx'
+import MyAccountPage from './pages/MyAccountPage.jsx'
+import AdminPage from './pages/AdminPage.jsx'
 
 export default function App() {
   return (
@@ -18,6 +21,9 @@ export default function App() {
         <Route index element={<HomePage />} />
         <Route path="category/main" element={<CategoryPage />} />
         <Route path="product/:id" element={<ProductDetailsPage />} />
+        <Route path="login" element={<LoginPage />} />
+        <Route path="account" element={<MyAccountPage />} />
+        <Route path="admin" element={<AdminPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
 

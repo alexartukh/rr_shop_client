@@ -178,3 +178,81 @@ a.product-tile:hover {
   height: auto;
   border-radius: 8px;
 }
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 360px;
+}
+
+.login-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.login-form input {
+  padding: 10px;
+  font-size: 1rem;
+}
+
+.login-form button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.login-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+@media (max-width: 700px) {
+  .login-columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Кнопка, которая выглядит как ссылка */
+.link-button {
+  padding: 0;
+  border: none;
+  background: none;
+  color: LinkText;
+  font: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.orders-table,
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.orders-table th,
+.data-table th,
+.orders-table td,
+.data-table td {
+  padding: 8px 12px;
+  border-bottom: 1px solid #8884;
+  text-align: left;
+}
+
+.admin-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+/* Широкая таблица прокручивается внутри своей колонки, а не растягивает страницу */
+.table-scroll {
+  overflow-x: auto;
+}
+
+@media (max-width: 700px) {
+  .admin-columns {
+    grid-template-columns: 1fr;
+  }
+}
