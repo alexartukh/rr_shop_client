@@ -256,3 +256,8 @@ a.product-tile:hover {
     grid-template-columns: 1fr;
   }
 }
+
+.button-link:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
