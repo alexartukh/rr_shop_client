@@ -1,16 +1,30 @@
-# React + Vite
+# Shop Client (React)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Клиент тестового интернет-магазина: React 19 + Vite + React Router.
+Данные берёт из Rails API (`shop-api`).
 
-Currently, two official plugins are available:
+## Запуск локально
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```bash
+npm install
+npm run dev
+```
 
-## React Compiler
+Адрес API задаётся переменной `VITE_API_URL` (см. `.env.example`).
+Без неё используется `http://192.168.33.10:3000`. Чтобы задать свой адрес локально,
+скопируйте `.env.example` в `.env.local` и поправьте значение.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+> Переменные `VITE_*` подставляются **при сборке** прямо в код страницы:
+> после изменения нужно пересобрать клиент, и секретов в них хранить нельзя.
 
-## Expanding the ESLint configuration
+## Размещение (Render)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+**New → Static Site**, этот репозиторий:
+
+- Build Command: `npm ci && npm run build`
+- Publish Directory: `dist`
+- Environment: `VITE_API_URL=https://<shop-api>.onrender.com`
+- Redirects/Rewrites: `/*` → `/index.html`, действие **Rewrite**
+  (иначе прямые ссылки вроде `/product/3` дадут 404). Для Netlify то же правило уже лежит в `public/_redirects`.
+
+После размещения добавьте адрес клиента в переменную `CORS_ORIGINS` у `shop-api`.
